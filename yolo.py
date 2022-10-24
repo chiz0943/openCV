@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
 	# Get the output layer names of the model
 	layer_names = net.getLayerNames()
-	layer_names = [layer_names[i[0]- 1] for i in net.getUnconnectedOutLayers()]
+	layer_names = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
         
 	# If both image and video files are given then raise error
 	if FLAGS.image_path is None and FLAGS.video_path is None:
@@ -202,6 +202,7 @@ if __name__ == '__main__':
 							fourcc = cv.VideoWriter_fourcc(*"MJPG")
 							writer = cv.VideoWriter(output_path, fourcc, 30, 									(frame.shape[1], frame.shape[0]), True)
 						else:
+							output_path = FLAGS.video_path + FLAGS.video_output_path
 							fourcc = cv.VideoWriter_fourcc(*"MJPG")
 							writer = cv.VideoWriter(FLAGS.video_output_path, fourcc, 30, 
 										(frame.shape[1], frame.shape[0]), True)
