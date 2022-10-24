@@ -144,23 +144,16 @@ if __name__ == '__main__':
 			num = 0
 			if FLAGS.image_outputFile_path:
 				output_path = FLAGS.image_outputFile_path
-				while( num < len(array_of_img)):
-					height = array_of_height[num]
-					width = array_of_width[num]
-					img = array_of_img[num]
-					img, _, _, _, _ = infer_image(net, layer_names, height, width, img, colors, labels, FLAGS)
-					cv.imwrite(output_path + array_of_filename[num]+"_prediction.jpg",img)
-					num = num + 1
 			else:
 				output_path = FLAGS.image_path
-				while( num < len(array_of_img)):
-					height = array_of_height[num]
-					width = array_of_width[num]
-					img = array_of_img[num]
-					img, _, _, _, _ = infer_image(net, layer_names, height, width, img, colors, labels, FLAGS)
-					cv.imwrite(array_of_filename[num]+"_prediction.jpg",img)
-					num = num + 1
-	
+
+			while( num < len(array_of_img)):
+				height = array_of_height[num]
+				width = array_of_width[num]
+				img = array_of_img[num]
+				img, _, _, _, _ = infer_image(net, layer_names, height, width, img, colors, labels, FLAGS)
+				cv.imwrite(output_path + array_of_filename[num]+"_prediction.jpg",img)
+				num = num + 1
 
 	elif FLAGS.video_path:
 		# Read the video
@@ -200,7 +193,8 @@ if __name__ == '__main__':
 						if FLAGS.video_outputFile_path : 
 							output_path = FLAGS.video_outputFile_path + FLAGS.video_output_path
 							fourcc = cv.VideoWriter_fourcc(*"MJPG")
-							writer = cv.VideoWriter(output_path, fourcc, 30, 									(frame.shape[1], frame.shape[0]), True)
+							writer = cv.VideoWriter(output_path, fourcc, 30,
+										(frame.shape[1], frame.shape[0]), True)
 						else:
 							output_path = FLAGS.video_path + FLAGS.video_output_path
 							fourcc = cv.VideoWriter_fourcc(*"MJPG")
