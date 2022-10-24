@@ -192,14 +192,12 @@ if __name__ == '__main__':
 						# Initialize the video writer
 						if FLAGS.video_outputFile_path : 
 							output_path = FLAGS.video_outputFile_path + FLAGS.video_output_path
-							fourcc = cv.VideoWriter_fourcc(*"MJPG")
-							writer = cv.VideoWriter(output_path, fourcc, 30,
-										(frame.shape[1], frame.shape[0]), True)
-						else:
-							output_path = FLAGS.video_path + FLAGS.video_output_path
-							fourcc = cv.VideoWriter_fourcc(*"MJPG")
-							writer = cv.VideoWriter(FLAGS.video_output_path, fourcc, 30, 
-										(frame.shape[1], frame.shape[0]), True)
+						else :
+							output_path = FLAGS.video_path +"/" + FLAGS.video_output_path
+
+						fourcc = cv.VideoWriter_fourcc(*"MJPG")
+						writer = cv.VideoWriter(output_path, fourcc, 30,
+									(frame.shape[1], frame.shape[0]), True)
 
 					writer.write(frame)
 				 
