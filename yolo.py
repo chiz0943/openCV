@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
 	# Get the output layer names of the model
 	layer_names = net.getLayerNames()
-	layer_names = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+	layer_names = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
         
 	# If both image and video files are given then raise error
 	if FLAGS.image_path is None and FLAGS.video_path is None:
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 			if FLAGS.image_outputFile_path:
 				output_path = FLAGS.image_outputFile_path
 			else:
-				output_path = FLAGS.image_path
+				output_path = FLAGS.image_path +"/"
 
 			while( num < len(array_of_img)):
 				height = array_of_height[num]
